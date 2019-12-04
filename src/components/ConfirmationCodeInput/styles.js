@@ -84,10 +84,10 @@ const clampMin = (minValue: number, value: number): number =>
 const MIN_FONT_SIZE = 14;
 
 export const getCellStyle = (props: Props, { isActive }: Options) => {
-  const { size, inactiveColor, activeColor, variant } = props;
+  const { size, inactiveColor, activeColor, variant, inputColor } = props;
 
   return {
-    color: activeColor,
+    color: inputColor || activeColor,
     fontSize: clampMin(MIN_FONT_SIZE, 0.5 * size),
     alignItems: 'center',
     justifyContent: 'center',

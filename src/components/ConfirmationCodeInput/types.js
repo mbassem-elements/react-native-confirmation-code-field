@@ -20,9 +20,9 @@ export type CellPropsFn = CellPropsOptions => ?TextInputProp;
 export type Props = $ReadOnly<{|
   // Required props
   onFulfill: (code: string) => void,
-
   // Not required props (rewritten in defaultProps)
   onChangeText: (code: string) => void,
+  inputColor:?string,
   blurOnSubmit: boolean,
   CellComponent: ComponentType<any>,
   autoFocus: boolean,

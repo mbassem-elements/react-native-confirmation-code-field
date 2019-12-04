@@ -20,7 +20,7 @@ import type {
 class ConfirmationCodeInput extends PureComponent<Props, State> {
   static defaultProps = {
     onChangeText: (code: string): string => code,
-
+    inputColor: null,
     normalizeCode: (code: string): string => code,
     cellProps: null,
     activeColor: '#fff',
@@ -228,7 +228,8 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
       if (
         x < locationX &&
         locationX < xEnd &&
-        (y < locationY && locationY < yEnd)
+        y < locationY &&
+        locationY < yEnd
       ) {
         return parseInt(index, 10);
       }
@@ -314,7 +315,7 @@ if (process.env.NODE_ENV !== 'production') {
   ConfirmationCodeInput.propTypes = {
     onFulfill: PropTypes.func.isRequired,
     onChangeText: PropTypes.func,
-
+    inputColor: PropTypes.string,
     normalizeCode: PropTypes.func,
     activeColor: PropTypes.string,
     autoFocus: PropTypes.bool,
