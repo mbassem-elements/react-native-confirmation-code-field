@@ -19,6 +19,8 @@ import type {
 
 class ConfirmationCodeInput extends PureComponent<Props, State> {
   static defaultProps = {
+    onChangeText: (code: string): string => code,
+
     normalizeCode: (code: string): string => code,
     cellProps: null,
     activeColor: '#fff',
@@ -154,13 +156,14 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
     'onChangeText',
     (text: string) => {
       const codeValue = this.truncateString(text);
-      const { codeLength, onFulfill, blurOnSubmit } = this.props;
+      const { codeLength, onFulfill, blurOnSubmit, onChangeText } = this.props;
 
       this.setState(
         {
           codeValue,
         },
         () => {
+          onChangeText(codeValue);
           if (this.getCodeLength() === codeLength) {
             if (blurOnSubmit) {
               this.blur();
@@ -310,6 +313,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   ConfirmationCodeInput.propTypes = {
     onFulfill: PropTypes.func.isRequired,
+    onChangeText: PropTypes.func,
 
     normalizeCode: PropTypes.func,
     activeColor: PropTypes.string,
